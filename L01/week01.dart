@@ -1,6 +1,6 @@
 // ============================================================
 // L01 — Dart พื้นฐาน (ITE-439 สัปดาห์ที่ 1)
-// ชื่อ-สกุล: ______________________  รหัสนักศึกษา: ____________
+// ชื่อ-สกุล: รัฐพงษ์ เกิดมงคล  รหัสนักศึกษา: 2413110236
 // ============================================================
 //
 // วิธีทำ
@@ -44,8 +44,8 @@ void main() {
 // ใบ้: ตัวเลขทศนิยมใช้ double, ตัดทศนิยมใช้ .toStringAsFixed(2)
 // ------------------------------------------------------------
 String bmi(double weight, double height) {
-  // TODO: เขียนโค้ดตรงนี้
-  return '';
+  double BMI = weight/(height*height);
+  return BMI.toStringAsFixed(2);
 }
 
 // ------------------------------------------------------------
@@ -59,18 +59,19 @@ String bmi(double weight, double height) {
 //      เช่น list.reduce((a, b) => a > b ? a : b)
 // ------------------------------------------------------------
 String average(List<int> numbers) {
-  // TODO
-  return '';
+  final total = numbers.reduce((a,b)=> a+b);
+  double aver = total/numbers.length;
+  return aver.toStringAsFixed(2);
 }
 
 int highest(List<int> numbers) {
-  // TODO
-  return 0;
+  final maxV = numbers.reduce((a,b)=> a>b?a:b);
+  return maxV;
 }
 
 int lowest(List<int> numbers) {
-  // TODO
-  return 0;
+  final lowestV = numbers.reduce((a,b)=> a<b?a:b);
+  return lowestV;
 }
 
 // ------------------------------------------------------------
@@ -90,10 +91,13 @@ const List<Map<String, dynamic>> students = [
   {'name': 'Nut', 'score': 79},
 ];
 
-List<String> topStudentNames(List<Map<String, dynamic>> list) {
-  // TODO
-  return [];
-}
+List topStudentNames(List<Map<String, dynamic>> list) {
+  final passed = list
+  .where((it)=>(it['score'] as int) >= 80)
+  .map((it)=>it['name'])
+  .toList();
+  return passed;
+} 
 
 // ------------------------------------------------------------
 // ข้อ 4 — Null Safety
